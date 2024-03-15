@@ -36,6 +36,7 @@ export const DraggableLane = Preact.memo(function DraggableLane({
   const path = useNestedEntityPath(laneIndex);
   const laneWidth = stateManager.useSetting('lane-width');
   const insertionMethod = stateManager.useSetting('new-card-insertion-method');
+  const laneDirection = stateManager.useSetting('lane-direction');
   const shouldMarkItemsComplete = !!lane.data.shouldMarkItemsComplete;
 
   const laneStyles = laneWidth ? { width: `${laneWidth}px` } : undefined;
@@ -103,7 +104,7 @@ export const DraggableLane = Preact.memo(function DraggableLane({
     <ScrollContainer
       id={lane.id}
       index={laneIndex}
-      className={classcat([c('lane-items'), c('vertical')])}
+      className={classcat([c('lane-items'), c('vertical'), {'lane-direction-vertical': laneDirection === 'vertical'},])}
       triggerTypes={laneAccepts}
       isStatic={isStatic}
     >
@@ -122,6 +123,9 @@ export const DraggableLane = Preact.memo(function DraggableLane({
       ref={measureRef}
       className={classcat([
         c('lane-wrapper'),
+        {
+          'lane-direction-vertical': laneDirection === 'vertical'
+        },
         {
           'is-sorting': isSorting,
         },

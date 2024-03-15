@@ -68,6 +68,9 @@ export default {
   'List width': 'List width',
   'Enter a number to set the list width in pixels.':
     'Enter a number to set the list width in pixels.',
+  'List direction': 'List direction',
+  'horizontal': 'horizontal',
+  'vertical': 'vertical',
   'Maximum number of archived cards': 'Maximum number of archived cards',
   "Archived cards can be viewed in markdown mode. This setting will begin removing old cards once the limit is reached. Setting this value to -1 will allow a board's archive to grow infinitely.":
     "Archived cards can be viewed in markdown mode. This setting will begin removing old cards once the limit is reached. Setting this value to -1 will allow a board's archive to grow infinitely.",

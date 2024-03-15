@@ -27,6 +27,7 @@ import { Icon } from './Icon/Icon';
 import { Lanes } from './Lane/Lane';
 import { LaneForm } from './Lane/LaneForm';
 import { DataTypes } from './types';
+import { Axis } from 'src/dnd/types';
 
 const boardScrollTiggers = [DataTypes.Item, DataTypes.Lane];
 const boardAccepts = [DataTypes.Lane];
@@ -55,6 +56,7 @@ export const Kanban = ({ view, stateManager }: KanbanProps) => {
   const maxArchiveLength = stateManager.useSetting('max-archive-size');
   const dateColors = stateManager.useSetting('date-colors');
   const tagColors = stateManager.useSetting('tag-colors');
+  const laneDirection = stateManager.useSetting('lane-direction');
 
   const closeLaneForm = Preact.useCallback(() => {
     if (boardData?.children.length > 0) {
@@ -365,11 +367,14 @@ export const Kanban = ({ view, stateManager }: KanbanProps) => {
                 {
                   'is-adding-lane': isLaneFormVisible,
                 },
+                {
+                  'lane-direction-vertical': laneDirection === 'vertical'
+                },
               ])}
               triggerTypes={boardScrollTiggers}
             >
               <div>
-                <Sortable axis="horizontal">
+                <Sortable axis={laneDirection}>
                   <Lanes lanes={boardData.children} />
                   <SortPlaceholder
                     className={c('lane-placeholder')}

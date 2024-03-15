@@ -68,6 +68,9 @@ export default {
     'List width': '목록 너비',
     'Enter a number to set the list width in pixels.':
         '픽셀 단위로 목록의 너비를 설정합니다.',
+    'List direction': '목록 방향',
+    'horizontal': '가로',
+    'vertical': '세로',
     'Maximum number of archived cards': '보관된 카드의 최대 수',
     "Archived cards can be viewed in markdown mode. This setting will begin removing old cards once the limit is reached. Setting this value to -1 will allow a board's archive to grow infinitely.":
         "보관된 카드는 마크다운 모드에서 볼 수 있습니다. 이 설정은 한도에 도달하면 이전 카드를 제거하기 시작합니다. 이 값을 -1로 설정하면 보관함이 무한정으로 커질 수 있습니다.",

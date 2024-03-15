@@ -91,6 +91,11 @@ button.kanban-plugin__search-cancel-button .kanban-plugin__icon {
   }
 }
 
+.kanban-plugin__board.lane-direction-vertical>div {
+  flex-direction: column;
+  padding-right: 0px !important;
+}
+
 .kanban-plugin__board.is-adding-lane > div {
   padding-right: calc(250px + 1rem);
 }
@@ -101,6 +106,11 @@ button.kanban-plugin__search-cancel-button .kanban-plugin__icon {
   margin-right: 10px;
   max-height: 100%;
   width: var(--lane-width);
+}
+
+.kanban-plugin__lane-wrapper.lane-direction-vertical {
+  margin-bottom: 10px;
+  margin-right: 0px !important;
 }
 
 .kanban-plugin__lane {
@@ -1485,9 +1495,20 @@ body:not(.native-scrollbars)
   overflow-x: auto;
 }
 
+.kanban-plugin__scroll-container.kanban-plugin__horizontal.lane-direction-vertical {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  justify-content: center;
+}
+
 .kanban-plugin__scroll-container.kanban-plugin__vertical {
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.kanban-plugin__scroll-container.kanban-plugin__vertical.lane-direction-vertical {
+  overflow-y: initial;
+  overflow-x: initial;
 }
 
 .kanban-plugin__drag-container {

@@ -299,6 +299,7 @@ export class StateManager {
         this.getSettingRaw('show-search', suppliedSettings) ?? true,
       'tag-colors': this.getSettingRaw('tag-colors', suppliedSettings) ?? [],
       'date-colors': this.getSettingRaw('date-colors', suppliedSettings) ?? [],
+      'lane-direction' : this.getSettingRaw('lane-direction', suppliedSettings) ?? 'horizontal',
     };
   }
 

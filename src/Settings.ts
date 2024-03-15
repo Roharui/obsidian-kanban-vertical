@@ -47,6 +47,7 @@ import {
   cleanUpDateSettings,
   renderDateSettings,
 } from './settings/DateColorSettings';
+import { Axis } from './dnd/types';
 
 const numberRegEx = /^\d+(?:\.\d+)?$/;
 
@@ -65,6 +66,7 @@ export interface KanbanSettings {
   'hide-tags-display'?: boolean;
   'hide-tags-in-title'?: boolean;
   'lane-width'?: number;
+  'lane-direction'?: Axis;
   'link-date-to-daily-note'?: boolean;
   'max-archive-size'?: number;
   'metadata-keys'?: DataKey[];
@@ -104,6 +106,7 @@ export const settingKeyLookup: Record<keyof KanbanSettings, true> = {
   'hide-tags-display': true,
   'hide-tags-in-title': true,
   'lane-width': true,
+  'lane-direction': true,
   'link-date-to-daily-note': true,
   'max-archive-size': true,
   'metadata-keys': true,
@@ -369,6 +372,26 @@ export class SettingsManager {
 
           this.applySettingsUpdate({
             $unset: ['lane-width'],
+          });
+        });
+      });
+
+    new Setting(contentEl)
+      .setName(t('List direction'))
+      .addDropdown((dropdown) => {
+        dropdown.addOption('horizontal', t('horizontal'));
+        dropdown.addOption('vertical', t('vertical'));
+
+        const [value, globalValue] = this.getSetting('lane-direction', local);
+
+        dropdown.setValue(
+          (value as string) || (globalValue as string) || 'horizontal'
+        );
+        dropdown.onChange((value) => {
+          this.applySettingsUpdate({
+            'lane-direction': {
+              $set: value as 'horizontal' | 'vertical',
+            },
           });
         });
       });
